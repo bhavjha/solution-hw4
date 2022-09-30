@@ -46,42 +46,57 @@ class App extends Component {
       ],
       selectedRollIndex: null,
       glazingType: "Keep Original",
-      packSize: 1
+      packSize: 1,
+      cartArray : []
+
     }
   }
 
-  cartArray = [];
 
       
-//  popUpSummary = (roll,glaze,pack,total) {
-//   let popup = document.getElementById("popupSummary");
-//   popup.innerHTML = "<b>" +roll + "</b>" + "</br>" + glaze + "<br/>" + "Pack of " + pack + "<br/>Price: $" + total;
-//   popup.classList.toggle("show")
-// }
+ popUpSummary = (name,glaze,pack,price) => {
+  let popup = document.getElementById("popupSummary");
+  popup.innerHTML = "<b>" +name + "</b>" + "</br>" + glaze + "<br/>" + "Pack of " + pack + "<br/>Price: " + price;
+  popup.classList.toggle("show");
+}
 
-//  popUpHide() {
-//   let popup = document.getElementById("popupSummary");
-//   popup.style.display='none';
-// }
+ popUpHide = () => {
+  let popup = document.getElementById("popupSummary");
+  popup.style.display='none';
+}
 
 
-  addToCart = () => {
-    if (this.state.selectedRollIndex != null) {
-      let newRollData = this.state.rollData
-      console.log(newRollData);
+  addToCart = ( name, glaze, pack, price) => {
+
+    // console.log('roll obj =', name, glaze, pack, price);
+
+    const rollobj = 
+    {
+      rollname: name,
+      rollglaze: glaze,
+      rollpack: pack,
+      rollprice: price
+    }
+//    console.log('roll obj =', rollobj);
 
       //add to array 
-      //call popup with the new object
-      newRollData[this.state.selectedRollIndex].glazingType = this.state.glazingType;
-      newRollData[this.state.selectedRollIndex].packSize = this.state.packSize;
+      console.log('cartArray',this.state.cartArray);
+      
+
+      //call popup with the new object - loop over objects to get total price
+      this.popUpSummary(name, glaze, pack, price);
+      this.setTimeout(this.popUpHide,3000);
+  
+      //Update cart total and number of items
+
       this.setState(prevState => ({
         ...prevState,
-        rollData: newRollData,
+        //rollData: newRollData,
+        cartArray: [...this.state.cartArray, rollobj],
         glazingType: "",
         packSize: "",
         selectedRollIndex: null
       }))
-    }
   }
 
  

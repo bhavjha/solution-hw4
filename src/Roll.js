@@ -31,7 +31,7 @@ class Roll extends Component {
   handleGlazingChange = (event) => {
     const newGlazing = event.target.value;
 
-    console.log('in handle glazing change, newGlazing =', newGlazing);
+    //console.log('in handle glazing change, newGlazing =', newGlazing);
 
     this.setState(prevState => ({
       ...prevState,
@@ -42,7 +42,7 @@ class Roll extends Component {
   handlePackSizeChange = (event) => {
     const newPackSize = event.target.value;
 
-    console.log('in handle pack size change, newPacksize =', newPackSize);
+    //console.log('in handle pack size change, newPacksize =', newPackSize);
     this.setState(prevState => ({
       ...prevState,
       packSize: newPackSize
@@ -54,12 +54,12 @@ class Roll extends Component {
 
   calcPrice = () => {
 
-    console.log('this.props.rollPrice =', this.props.rollPrice);
-    console.log('this.state.packSize = ', this.state.packSize);
-    console.log('this.state.glazingType = ', this.state.glazingType);
+    // console.log('this.props.rollPrice =', this.props.rollPrice);
+    // console.log('this.state.packSize = ', this.state.packSize);
+    // console.log('this.state.glazingType = ', this.state.glazingType);
 
-    console.log('this.packSizeOptions[this.state.packSize] =', this.packSizeOptions[this.state.packSize]);
-    console.log('this.glazingOptions[this.state.glazingType] =', this.glazingOptions[this.state.glazingType]);
+    // console.log('this.packSizeOptions[this.state.packSize] =', this.packSizeOptions[this.state.packSize]);
+    // console.log('this.glazingOptions[this.state.glazingType] =', this.glazingOptions[this.state.glazingType]);
     
     const basePrice = (this.props.rollPrice).slice(2);
     let finalCost = ( parseFloat(basePrice) * parseFloat(this.packSizeOptions[this.state.packSize]) ) + parseFloat(this.glazingOptions[this.state.glazingType]);
@@ -102,7 +102,7 @@ class Roll extends Component {
                   <div className="item-final">
                     <p className="item-cost" id="originalCinnamonRoll">{this.calcPrice()}</p>
                     <button className="item-cart" type="button" 
-                    onClick={() => this.props.onAdd(this.props.rollIndex, this.handlePackSizeChange, this.props.rollName, this.state.glazingType, this.calcPrice)}>Add to Cart</button>
+                    onClick={() => this.props.onAdd(this.props.rollName, this.state.glazingType, this.state.packSize, this.calcPrice())}>Add to Cart</button>
                   </div>
                 </div>
             </div>
