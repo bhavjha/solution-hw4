@@ -90,6 +90,17 @@ class App extends Component {
       let cartTotal = 0.00;
       let cartItems = 0;
 
+
+      this.setState(prevState => ({
+        ...prevState,
+        //rollData: newRollData,
+        cartArray: [...prevState.cartArray, rollobj],
+        glazingType: "",
+        packSize: "",
+        selectedRollIndex: null,
+      }), 
+      ()=>{
+
       this.state.cartArray.map(cartItem => {
         let totalprice = (cartItem.rollprice).slice(2); 
         cartTotal += parseFloat(totalprice); 
@@ -98,15 +109,10 @@ class App extends Component {
 
       cartSummaryItems.innerText = cartItems +" items";
       cartSummaryItemsTotal.innerText = "Total: $" + cartTotal;
-
-      this.setState(prevState => ({
-        ...prevState,
-        //rollData: newRollData,
-        cartArray: [...this.state.cartArray, rollobj],
-        glazingType: "",
-        packSize: "",
-        selectedRollIndex: null,
-      }))
+      console.log("CART");
+      
+      }
+      )
   }
 
  
