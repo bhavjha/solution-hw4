@@ -1,0 +1,25 @@
+
+/* FROM HW 2 */
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    margin: -8px;
+  }
+  
+  .gallery {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    padding: 50px;
+    gap: 10% 20%;
+  }
+  
+  .item-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 10px;
+    align-items: stretch;
+  }
+  
