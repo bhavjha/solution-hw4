@@ -68,8 +68,6 @@ class App extends Component {
 
   addToCart = ( name, glaze, pack, price) => {
 
-    // console.log('roll obj =', name, glaze, pack, price);
-
     const rollobj = 
     {
       rollname: name,
@@ -77,17 +75,41 @@ class App extends Component {
       rollpack: pack,
       rollprice: price
     }
-//    console.log('roll obj =', rollobj);
 
       //add to array 
       console.log('cartArray',this.state.cartArray);
       
-
       //call popup with the new object - loop over objects to get total price
+
       this.popUpSummary(name, glaze, pack, price);
-      this.setTimeout(this.popUpHide,3000);
+      // this.setTimeout(this.popUpHide,3000);
+
+      useEffect(() => {
+        const timer = setTimeout(() => {
+          this.popUpHide()
+        }, 3000);
+
+        return () => clearTimeout(timer);
+      }, []);
+
+
   
       //Update cart total and number of items
+      let cartSummaryItems = document.getElementById("cart-summary-items");
+      let cartSummaryItemsTotal = document.getElementById("cart-summary-items-total");
+
+      let cartTotal = 0.00;
+      let cartItems = 0;
+
+      this.state.cartArray.map(cartItem => {
+        let totalprice = (cartItem.rollprice).slice(2); 
+        cartTotal += parseFloat(totalprice); 
+        cartItems +=1;
+      });
+
+      cartSummaryItems.innerText = cartItems +" items";
+      cartSummaryItemsTotal.innerText = "Total: " + cartTotal;
+
 
       this.setState(prevState => ({
         ...prevState,
