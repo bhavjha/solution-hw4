@@ -99,10 +99,6 @@ class App extends Component {
       cartSummaryItems.innerText = cartItems +" items";
       cartSummaryItemsTotal.innerText = "Total: $" + cartTotal;
 
-      //set displayed price to baseprice
-      // let base = document.getElementById("baseprice");
-      // base.innerText = "$ " + baseprice;
-
       this.setState(prevState => ({
         ...prevState,
         //rollData: newRollData,
@@ -114,7 +110,6 @@ class App extends Component {
   }
 
  
-
   render() {
     return (
       <div className="App">
