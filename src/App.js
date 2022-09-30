@@ -75,23 +75,12 @@ class App extends Component {
       rollpack: pack,
       rollprice: price
     }
-
       //add to array 
       console.log('cartArray',this.state.cartArray);
       
       //call popup with the new object - loop over objects to get total price
-
       this.popUpSummary(name, glaze, pack, price);
-      // this.setTimeout(this.popUpHide,3000);
-
-      useEffect(() => {
-        const timer = setTimeout(() => {
-          this.popUpHide()
-        }, 3000);
-
-        return () => clearTimeout(timer);
-      }, []);
-
+      setTimeout(this.popUpHide,3000);
 
   
       //Update cart total and number of items
@@ -108,8 +97,11 @@ class App extends Component {
       });
 
       cartSummaryItems.innerText = cartItems +" items";
-      cartSummaryItemsTotal.innerText = "Total: " + cartTotal;
+      cartSummaryItemsTotal.innerText = "Total: $" + cartTotal;
 
+      //set displayed price to baseprice
+      // let base = document.getElementById("baseprice");
+      // base.innerText = "$ " + baseprice;
 
       this.setState(prevState => ({
         ...prevState,
@@ -117,7 +109,7 @@ class App extends Component {
         cartArray: [...this.state.cartArray, rollobj],
         glazingType: "",
         packSize: "",
-        selectedRollIndex: null
+        selectedRollIndex: null,
       }))
   }
 

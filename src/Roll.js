@@ -100,9 +100,9 @@ class Roll extends Component {
                     </div>
                   </div>
                   <div className="item-final">
-                    <p className="item-cost" id="originalCinnamonRoll">{this.calcPrice()}</p>
+                    <p className="item-cost" id="baseprice">{this.calcPrice()}</p>
                     <button className="item-cart" type="button" 
-                    onClick={() => this.props.onAdd(this.props.rollName, this.state.glazingType, this.state.packSize, this.calcPrice())}>Add to Cart</button>
+                    onClick={() => this.props.onAdd(this.props.rollName, this.state.glazingType, this.state.packSize,this.calcPrice())}>Add to Cart</button>
                   </div>
                 </div>
             </div>
