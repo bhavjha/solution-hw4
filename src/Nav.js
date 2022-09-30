@@ -17,6 +17,17 @@ class Nav extends Component {
             <p className="nav-items">CART</p>
           </div>
 
+
+        <div class="cart-summary">
+          <p id="cart-summary-items" class="cart-summary-items">0 items</p>
+          <p id="cart-summary-items-total" class="cart-summary-items">Total: $0.00</p>
+        </div>
+
+        <div class="popup">
+          <span class="popuptext" id="popupSummary"><p>Added to cart:</p><p class="summaryOfRoll"></p>
+          </span>
+        </div>
+
           <div>
             <hr/>
           </div>

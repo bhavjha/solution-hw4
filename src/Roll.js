@@ -49,6 +49,9 @@ class Roll extends Component {
     }))
   }
 
+
+
+
   calcPrice = () => {
 
     console.log('this.props.rollPrice =', this.props.rollPrice);
@@ -59,15 +62,15 @@ class Roll extends Component {
     console.log('this.glazingOptions[this.state.glazingType] =', this.glazingOptions[this.state.glazingType]);
     
     const basePrice = (this.props.rollPrice).slice(2);
-    //let finalCost = parseFloat(basePrice);
     let finalCost = ( parseFloat(basePrice) * parseFloat(this.packSizeOptions[this.state.packSize]) ) + parseFloat(this.glazingOptions[this.state.glazingType]);
     finalCost = '$ '+ finalCost.toFixed(2)
+
+    // popUpSummary(rolls[idOfRollPrice].rolltype, pr_text, pa, finalCost);
+    // setTimeout(popUpHide,3000);
+
     return (finalCost);
 
-    // this.setState(prevState => ({
-    //   ...prevState,
-    //   glazingType: newGlazing
-    // }))
+   
   };
 
   render() {
@@ -98,7 +101,8 @@ class Roll extends Component {
                   </div>
                   <div className="item-final">
                     <p className="item-cost" id="originalCinnamonRoll">{this.calcPrice()}</p>
-                    <button className="item-cart" type="button" >Add to Cart</button>
+                    <button className="item-cart" type="button" 
+                    onClick={() => this.props.onAdd(this.props.rollIndex, this.handlePackSizeChange, this.props.rollName, this.state.glazingType, this.calcPrice)}>Add to Cart</button>
                   </div>
                 </div>
             </div>

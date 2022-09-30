@@ -6,8 +6,6 @@ import Nav from './Nav.js'
 import Roll from './Roll.js';
 
 
-import Index from './views/home/Index.js'
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -52,18 +50,28 @@ class App extends Component {
     }
   }
 
-  // editButtonHandler = (rollIndex) => {
-  //   this.setState(prevState => ({
-  //     ...prevState,
-  //     selectedRollIndex: rollIndex,
-  //     glazingType: this.state.rollData[rollIndex].rollGlazing,
-  //     packSize: this.state.rollData[rollIndex].rollPackSize
-  //   }))
-  // };
+  cartArray = [];
+
+      
+//  popUpSummary = (roll,glaze,pack,total) {
+//   let popup = document.getElementById("popupSummary");
+//   popup.innerHTML = "<b>" +roll + "</b>" + "</br>" + glaze + "<br/>" + "Pack of " + pack + "<br/>Price: $" + total;
+//   popup.classList.toggle("show")
+// }
+
+//  popUpHide() {
+//   let popup = document.getElementById("popupSummary");
+//   popup.style.display='none';
+// }
+
 
   addToCart = () => {
     if (this.state.selectedRollIndex != null) {
       let newRollData = this.state.rollData
+      console.log(newRollData);
+
+      //add to array 
+      //call popup with the new object
       newRollData[this.state.selectedRollIndex].glazingType = this.state.glazingType;
       newRollData[this.state.selectedRollIndex].packSize = this.state.packSize;
       this.setState(prevState => ({
@@ -92,6 +100,7 @@ class App extends Component {
                       rollPrice={this.state.rollData[0].rollPrice}
                       glazingType={this.state.rollData[0].glazingType} 
                       packSize={this.state.rollData[0].packSize}
+                      onAdd={this.addToCart}
                    />
                    <Roll
                       rollIndex={1}
@@ -100,6 +109,7 @@ class App extends Component {
                       rollPrice={this.state.rollData[1].rollPrice}
                       glazingType={this.state.rollData[1].glazingType} 
                       packSize={this.state.rollData[1].packSize} 
+                      onAdd={this.addToCart}
                    />
                    <Roll
                       rollIndex={2}
@@ -108,6 +118,7 @@ class App extends Component {
                       rollPrice={this.state.rollData[2].rollPrice}
                       glazingType={this.state.rollData[2].glazingType} 
                       packSize={this.state.rollData[2].packSize} 
+                      onAdd={this.addToCart}
                    />
                 </div>
               <div className="item-row">
@@ -118,6 +129,7 @@ class App extends Component {
                       rollPrice={this.state.rollData[3].rollPrice}
                       glazingType={this.state.rollData[3].glazingType} 
                       packSize={this.state.rollData[3].packSize} 
+                      onAdd={this.addToCart}
                    />
                    <Roll
                       rollIndex={4}
@@ -126,6 +138,7 @@ class App extends Component {
                       rollPrice={this.state.rollData[4].rollPrice}
                       glazingType={this.state.rollData[4].glazingType} 
                       packSize={this.state.rollData[4].packSize} 
+                      onAdd={this.addToCart}
                    />
                    <Roll
                       rollIndex={5}
@@ -134,6 +147,7 @@ class App extends Component {
                       rollPrice={this.state.rollData[5].rollPrice}
                       glazingType={this.state.rollData[5].glazingType} 
                       packSize={this.state.rollData[5].packSize} 
+                      onAdd={this.addToCart}
                    />
                 </div>
             </div>
